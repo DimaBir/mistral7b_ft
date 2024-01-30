@@ -1,0 +1,17 @@
+defaults:
+  - model: mistral7b
+
+model:
+  name: "Mistral-7B"
+  train_batch_size: 8
+  valid_batch_size: 4
+  epochs: 3
+  learning_rate: 0.00001
+  lora_alpha: 2
+  lora_r: 4
+  max_length: 512
+
+paths:
+  train_dataset: "data/train_dataset.csv"
+  model_save_path: "models/finetuned_mistral7b.pt"
+  tensorboard_log: "runs"

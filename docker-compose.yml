@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  finetune_service:
+    build:
+      context: .
+    runtime: nvidia
+    volumes:
+      - .:/workspace
+    ports:
+      - "6006:6006"

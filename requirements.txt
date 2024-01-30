@@ -1,0 +1,8 @@
+torch
+transformers
+datasets
+lora
+hydra-core
+pandas
+tensorboard
+tqdm
