@@ -2,7 +2,6 @@ import torch
 from tqdm.auto import tqdm
 from torch.optim import AdamW
 from transformers import AutoTokenizer
-from peft import PEFTModel, LoRAConfig  # Import PEFTModel and LoRAConfig
 from model import load_model  # Assuming load_model is adjusted for PEFTModel
 from dataset import CodingDataset
 from torch.utils.tensorboard import SummaryWriter
