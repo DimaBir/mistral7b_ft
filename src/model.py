@@ -1,18 +1,28 @@
+from peft import PEFTModel, LoRAConfig
 from transformers import AutoModelForCausalLM
-from lora import LoRAConfig, apply_lora
-from omegaconf import DictConfig
 
-def load_model(cfg: DictConfig) -> AutoModelForCausalLM:
+
+def load_model(cfg):
     """
-    Load the Mistral 7B model and apply LoRA configuration.
+    Load the model and wrap it with PEFTModel for LoRA training.
 
     Parameters:
-    cfg (DictConfig): The configuration object from Hydra.
+    cfg: Configuration object with model settings.
 
     Returns:
-    AutoModelForCausalLM: The loaded and configured Mistral 7B model.
+    The wrapped model with LoRA configuration applied.
     """
-    model = AutoModelForCausalLM.from_pretrained(cfg.model.name)
-    lora_config = LoRAConfig(lora_alpha=cfg.model.lora_alpha, lora_r=cfg.model.lora_r)
-    model = apply_lora(model, lora_config)
+    # Load the base model
+    base_model = AutoModelForCausalLM.from_pretrained(cfg.model.name)
+
+    # Create a LoRAConfig
+    lora_config = LoRAConfig.from_pretrained(
+        cfg.model.name,
+        lora_alpha=cfg.model.lora_alpha,
+        lora_r=cfg.model.lora_r
+    )
+
+    # Wrap the base model as a PEFTModel for LoRA training
+    model = PEFTModel(base_model, lora_config)
+
     return model
