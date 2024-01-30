@@ -2,11 +2,12 @@ import torch
 from tqdm.auto import tqdm
 from torch.optim import AdamW
 from transformers import AutoTokenizer
-from model import load_model  # Assuming load_model is adjusted for PEFTModel
+from model import load_model
 from dataset import CodingDataset
 from torch.utils.tensorboard import SummaryWriter
 import hydra
 from omegaconf import DictConfig
+
 
 @hydra.main(config_path="../conf", config_name="config")
 def finetune(cfg: DictConfig):
@@ -16,6 +17,7 @@ def finetune(cfg: DictConfig):
     Parameters:
     cfg (DictConfig): The configuration object from Hydra.
     """
+    print(f"HERE!!!!!")
     # Initialize TensorBoard writer
     writer = SummaryWriter()
 
