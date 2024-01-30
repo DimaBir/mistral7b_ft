@@ -16,7 +16,7 @@ def load_model(cfg):
     base_model = AutoModelForCausalLM.from_pretrained(cfg.model.name)
 
     # Create a LoRAConfig
-    lora_config = LoRAConfig.from_pretrained(
+    lora_config = LoraConfig.from_pretrained(
         cfg.model.name,
         lora_alpha=cfg.model.lora_alpha,
         lora_r=cfg.model.lora_r
