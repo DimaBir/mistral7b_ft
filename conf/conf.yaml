@@ -1,3 +1,6 @@
+hydra:
+  version_base: "1.1"
+
 defaults:
   - model: mistral7b
 
