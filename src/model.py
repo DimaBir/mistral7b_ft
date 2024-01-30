@@ -1,4 +1,4 @@
-from peft import PEFTModel, LoRAConfig
+from peft import PEFTModel, LoRAConfig, get_peft_model
 from transformers import AutoModelForCausalLM
 
 
@@ -23,6 +23,6 @@ def load_model(cfg):
     )
 
     # Wrap the base model as a PEFTModel for LoRA training
-    model = PEFTModel(base_model, lora_config)
+    model = get_peft_model(base_model, lora_config)
 
     return model
