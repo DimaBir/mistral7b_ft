@@ -2,14 +2,14 @@ import torch
 from tqdm.auto import tqdm
 from torch.optim import AdamW
 from transformers import AutoTokenizer
-from peft import PEFTModel, LoRAConfig  # Import PEFTModel and LoRAConfig
-from model import load_model  # Assuming load_model is adjusted for PEFTModel
+from model import load_model
 from dataset import CodingDataset
 from torch.utils.tensorboard import SummaryWriter
 import hydra
 from omegaconf import DictConfig
 
-@hydra.main(config_path="../conf", config_name="config")
+
+@hydra.main(version_base=None, config_path="../conf", config_name="config")
 def finetune(cfg: DictConfig):
     """
     Fine-tune the Mistral 7B model with LoRA and TensorBoard integration.
@@ -17,6 +17,7 @@ def finetune(cfg: DictConfig):
     Parameters:
     cfg (DictConfig): The configuration object from Hydra.
     """
+    print(f"HERE!!!!!")
     # Initialize TensorBoard writer
     writer = SummaryWriter()
 
@@ -52,3 +53,7 @@ def finetune(cfg: DictConfig):
     # Save the underlying base model of PEFTModel
     torch.save(model.base_model.state_dict(), cfg.paths.model_save_path)
     writer.close()
+
+
+if __name__ == '__main__':
+    finetune()
