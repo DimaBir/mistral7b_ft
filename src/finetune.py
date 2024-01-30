@@ -2,8 +2,8 @@ import torch
 from tqdm.auto import tqdm
 from torch.optim import AdamW
 from transformers import AutoTokenizer
-from .model import load_model
-from .dataset import CodingDataset
+from model import load_model
+from dataset import CodingDataset
 from torch.utils.tensorboard import SummaryWriter
 import hydra
 from omegaconf import DictConfig
