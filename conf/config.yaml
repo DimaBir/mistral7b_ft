@@ -1,5 +1,5 @@
 model:
-  name: "/kaggle/input/mistral/pytorch/7b-v0.1-hf/1"
+  name: "mistralai/Mistral-7B-v0.1"
   train_batch_size: 8
   valid_batch_size: 4
   epochs: 3
