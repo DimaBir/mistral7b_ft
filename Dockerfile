@@ -1,5 +1,5 @@
 # Use NVIDIA's CUDA base image
-FROM nvidia/cuda:11.0-base-ubuntu20.04 as base
+FROM nvidia/cuda:12.3.1-base-ubuntu20.04 as base
 
 # Install required system packages
 RUN apt-get update && apt-get install -y \
