@@ -53,3 +53,7 @@ def finetune(cfg: DictConfig):
     # Save the underlying base model of PEFTModel
     torch.save(model.base_model.state_dict(), cfg.paths.model_save_path)
     writer.close()
+
+
+if __name__ == '__main__':
+    finetune()
