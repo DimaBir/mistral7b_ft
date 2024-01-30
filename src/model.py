@@ -1,4 +1,4 @@
-from peft import LoRAConfig, get_peft_model
+from peft import LoraConfig, get_peft_model
 from transformers import AutoModelForCausalLM
 
 
